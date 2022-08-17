@@ -1,7 +1,7 @@
 /*
-Problem Name: Devu, the Singer and Churu, the Joker
+Problem Name: Lunch Rush
 Problem Type: A - 900
-Problem Link: https://codeforces.com/problemset/problem/439/A
+Problem Link: https://codeforces.com/problemset/problem/276/A
 Author: Jash Desai (jash13desai)
 */
 // ---------- HEADER ----------
@@ -39,8 +39,7 @@ void putl(T&&... args) { ((cout << args << " "), ...); cout << '\n';}
 #define tostr(x) to_string(x)
 #define rep(i,a,b) for(int i=a; i<b; i++)
 #define seeArr(arr,n) for(int i=0;i<n;i++){cin>>arr[i];}
-#define seeVi(v) for(int i=0;i<v.sz;i++){int x; cin>>x; v.pb(x);}
-#define seevi(v) for(int i=0;i<v.sz;i++){cin>>v[i];}
+#define seeVi(v,n) for(int i=0;i<n;i++){int x; cin>>x; v.pb(x);}
 // ---------- DEBUG ----------
 #ifndef ONLINE_JUDGE
 #define debug(x) cerr << #x <<" : "; _print(x); cerr << '\n';
@@ -70,8 +69,15 @@ const ll md = 1000000007;
 int gcd(int a, int b){return (!b) ? a : gcd(b, a % b);}
 int fact(int n){if(n==1 || n==0){return 1;} return (n*fact(n-1));}
 // ---------- SOLUTIONS ----------
-void solve(){
-    
+void solve() {
+    int n,k; see(n,k);
+    int a=INT_MIN;
+    rep(i,0,n){
+        int f,t; see(f,t);
+        if(t >= k) a = max(a,f-t+k);
+        else a = max(a,f);
+    }
+    put(a);
 }
 // ---------- MAIN ----------
 int32_t main() {
