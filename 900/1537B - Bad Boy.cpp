@@ -1,6 +1,6 @@
 /*
 Problem Name: Bad Boy
-Problem Type: A - 900
+Problem Type: B - 900
 Problem Link: https://codeforces.com/problemset/problem/1537/B
 Author: Jash Desai (jash13desai)
 */

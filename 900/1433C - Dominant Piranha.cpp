@@ -1,6 +1,6 @@
 /*
 Problem Name: Dominant Piranha
-Problem Type: A - 900
+Problem Type: C - 900
 Problem Link: https://codeforces.com/problemset/problem/1433/C
 Author: Jash Desai (jash13desai)
 */

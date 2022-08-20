@@ -1,7 +1,7 @@
 /*
-Problem Name: Queue at the School
-Problem Type: B - 800
-Problem Link: https://codeforces.com/problemset/problem/266/B
+Problem Name: DIV + MOD
+Problem Type: B - 900
+Problem Link: https://codeforces.com/problemset/problem/1650/B
 Author: Jash Desai (jash13desai)
 */
 // ---------- HEADER ----------
@@ -39,7 +39,8 @@ void putl(T&&... args) { ((cout << args << " "), ...); cout << '\n';}
 #define tostr(x) to_string(x)
 #define rep(i,a,b) for(int i=a; i<b; i++)
 #define seeArr(arr,n) for(int i=0;i<n;i++){cin>>arr[i];}
-#define seeVi(v,n) for(int i=0;i<n;i++){int x; cin>>x; v.pb(x);}
+#define seeVi(v) for(int i=0;i<v.sz;i++){int x; cin>>x; v.pb(x);}
+#define seevi(v) for(int i=0;i<v.sz;i++){cin>>v[i];}
 // ---------- DEBUG ----------
 #ifndef ONLINE_JUDGE
 #define debug(x) cerr << #x <<" : "; _print(x); cerr << '\n';
@@ -70,37 +71,26 @@ int gcd(int a, int b){return (!b) ? a : gcd(b, a % b);}
 int fact(int n){if(n==1 || n==0){return 1;} return (n*fact(n-1));}
 // ---------- SOLUTIONS ----------
 void solve(){
-    int n,time; cin>>n>>time;
-    string s; cin>>s;
-    while(time--){
-        int currIdx=0; int count=0;
-        vi v;
-        int i=0; int j=1;
-        while(j<n){
-            if(s[i]=='B' && s[j]=='G'){
-                v.push_back(i);
-                currIdx++;
-                count++;
-            }
-            i++;
-            j++;
-        }
-        rep(i,0,count){
-            char temp=s[v[i]];
-            s[v[i]]=s[v[i]+1];
-            s[v[i]+1]=temp;
-        }
+    int l,r,a; see(l,r,a);
+    if(l==r){
+        put((l/a) + (l%a));
+        return;
     }
-    cout << s;
+    int x=r;
+    if(r%a != (a-1)){
+        x = (r/a)*a-1;
+        if(x<l) x=r;
+    }
+    put((x/a)+(x%a));
 }
 // ---------- MAIN ----------
-signed main() {
+int32_t main() {
 #ifndef ONLINE_JUDGE
     freopen("error.txt", "w", stderr);
 #endif
     IOS;
     int t = 1;
-    // cin>>t;
+    cin>>t;
     while (t--) {
         solve();
         nl;
@@ -108,4 +98,3 @@ signed main() {
     return 0;
 }
 // ---------- TEMP ----------
-// ---------- END ----------

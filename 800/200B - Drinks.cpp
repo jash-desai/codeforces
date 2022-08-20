@@ -1,6 +1,6 @@
 /*
 Problem Name: Drinks
-Problem Type: A - 800
+Problem Type: B - 800
 Problem Link: https://codeforces.com/problemset/problem/200/B
 Author: Jash Desai (jash13desai)
 */

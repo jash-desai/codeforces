@@ -1,6 +1,6 @@
 /*
 Problem Name: Maximums
-Problem Type: A - 900
+Problem Type: B - 900
 Problem Link: https://codeforces.com/problemset/problem/1326/B
 Author: Jash Desai (jash13desai)
 */
