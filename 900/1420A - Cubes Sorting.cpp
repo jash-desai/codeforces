@@ -1,7 +1,7 @@
 /*
-Problem Name: Lights Out
+Problem Name: Cubes Sorting
 Problem Type: A - 900
-Problem Link: https://codeforces.com/problemset/problem/275/B
+Problem Link: https://codeforces.com/problemset/problem/1420/A
 Author: Jash Desai (jash13desai)
 */
 // ---------- HEADER ----------
@@ -69,69 +69,55 @@ const ll md = 1000000007;
 // ---------- FUNCTIONS ----------
 int gcd(int a, int b){return (!b) ? a : gcd(b, a % b);}
 int fact(int n){if(n==1 || n==0){return 1;} return (n*fact(n-1));}
+int merge(vi &v, vi &t, int l, int m, int r){
+    int i,j,k;
+    int a=0;
+    i=l; j=m; k=l;
+    while((i<=m-1) and (j<=r)){
+        if(v[i] <= v[j]){
+            t[k++] = v[i++];
+        }else{
+            t[k++] = v[j++];
+            a += (m-i);
+        }
+    }
+    while(i<=m-1){
+        t[k++] = v[i++];
+    }
+    while(j<=r){
+        t[k++] = v[j++];
+    }
+    rep(i,l,r+1){
+        v[i]=t[i];
+    }
+    return a;
+}
+int _mergesort(vi &v, vi &t, int l, int r){
+    int mid, a=0;
+    if(r>l){
+        mid = (r+l)/2;
+        a += _mergesort(v,t,l,mid);
+        a += _mergesort(v,t,mid+1,r);
+
+        a += merge(v,t,l,mid+1,r);
+    }
+    return a;
+}
+int mergesort(vi &v, int n){
+    vi t(n);
+    return _mergesort(v, t, 0, n-1);
+}
 // ---------- SOLUTIONS ----------
 void solve(){
-    vvi v(3,vi(3,1));
-    vvi a(3, vi(3,1));
-    rep(i,0,3) rep(j,0,3) see(v[i][j]);
-    rep(i,0,3){
-        rep(j,0,3){
-            if(v[i][j]%2==0){
-                continue;
-            }else{
-                if(i==1 and j==1){
-                    a[i][j]= 1 - a[i][j];
-                    a[0][1]= 1 - a[0][1];
-                    a[1][2]= 1 - a[1][2];
-                    a[2][1]= 1 - a[2][1];
-                    a[1][0]= 1 - a[1][0];
-                }else if(i==0 and j==0){
-                    a[i][j]= 1 - a[i][j];
-                    a[1][0]= 1 - a[1][0];
-                    a[0][1]= 1 - a[0][1];
-                }else if(i==0 and j==1){
-                    a[i][j]= 1 - a[i][j];
-                    a[0][0]= 1 - a[0][0];
-                    a[0][2]= 1 - a[0][2];
-                    a[1][1]= 1 - a[1][1];
-                }else if(i==0 and j==2){
-                    a[i][j]= 1 - a[i][j];
-                    a[0][1]= 1 - a[0][1];
-                    a[1][2]= 1 - a[1][2];
-                }else if(i==1 and j==0){
-                    a[i][j]= 1 - a[i][j];
-                    a[0][0]= 1 - a[0][0];
-                    a[1][1]= 1 - a[1][1];
-                    a[2][0]= 1 - a[2][0];
-                }else if(i==1 and j==2){
-                    a[i][j]= 1 - a[i][j];
-                    a[0][2]= 1 - a[0][2];
-                    a[1][1]= 1 - a[1][1];
-                    a[2][2]= 1 - a[2][2];
-                }else if(i==2 and j==0){
-                    a[i][j]= 1 - a[i][j];
-                    a[1][0]= 1 - a[1][0];
-                    a[2][1]= 1 - a[2][1];
-                }else if(i==2 and j==1){
-                    a[i][j]= 1 - a[i][j];
-                    a[2][0]= 1 - a[2][0];
-                    a[1][1]= 1 - a[1][1];
-                    a[2][2]= 1 - a[2][2];
-                }else if(i==2 and j==2){
-                    a[i][j]= 1 - a[i][j];
-                    a[1][2]= 1 - a[1][2];
-                    a[2][1]= 1 - a[2][1];
-                }
-            }
-        }
+    int n; see(n);
+    vi v(n); seevi(v);
+    int a=mergesort(v,n);
+    // putl(a);
+    if(a > ((n*(n-1))/2)-1){
+        put("NO");
+        return;
     }
-
-    rep(i,0,3){
-        rep(j,0,3){
-            cout << a[i][j];
-        }
-        nl;
-    }
+    put("YES");
 }
 // ---------- MAIN ----------
 int32_t main() {
@@ -140,7 +126,7 @@ int32_t main() {
 #endif
     IOS;
     int t = 1;
-    // cin>>t;
+    cin>>t;
     while (t--) {
         solve();
         // nl;
