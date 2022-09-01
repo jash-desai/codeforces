@@ -1,7 +1,7 @@
 /*
-Problem Name: Translation
+Problem Name: Spell Check
 Problem Type: A - 800
-Problem Link: https://codeforces.com/problemset/problem/41/A
+Problem Link: https://codeforces.com/problemset/problem/1722/A
 Author: Jash Desai (jash13desai)
 */
 // ---------- HEADER ----------
@@ -69,25 +69,32 @@ const ll md = 1000000007;
 // ---------- FUNCTIONS ----------
 int gcd(int a, int b){return (!b) ? a : gcd(b, a % b);}
 int fact(int n){if(n==1 || n==0){return 1;} return (n*fact(n-1));}
-string reverseStr(string s){
-    int i=0;    int j=s.sz-1;
-    while(i<=j){
-        char temp=s[i];
-        s[i]=s[j];
-        s[j]=temp;
-        j--;
-        i++;
-    }
-    return s;
-}
 // ---------- SOLUTIONS ----------
 void solve(){
-    string s,t;    see(s,t);
-    if(t==reverseStr(s)){
-        cout << "YES";
-    }else{
-        cout << "NO";
+    int n; string s; see(n,s);
+    int t,i,m,u,r;
+    t=0, i=0, m=0, u=0, r=0;
+    for(auto x:s){
+        if(x=='T'){
+            t++;
+        }else if(x=='i'){
+            i++;
+        }else if(x=='m'){
+            m++;
+        }else if(x=='u'){
+            u++;
+        }else if(x=='r'){
+            r++;
+        }else{
+            put("NO"); return;
+        }
     }
+    if(t==1 and i==1 and m==1 and u==1 and r==1){
+        put("YES");
+    }else{
+        put("NO");
+    }
+    return;
 }
 // ---------- MAIN ----------
 signed main() {
@@ -96,7 +103,7 @@ signed main() {
 #endif
     IOS;
     int t = 1;
-    // cin>>t;
+    cin>>t;
     while (t--) {
         solve();
         nl;

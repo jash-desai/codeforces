@@ -1,7 +1,7 @@
 /*
-Problem Name: Translation
-Problem Type: A - 800
-Problem Link: https://codeforces.com/problemset/problem/41/A
+Problem Name: Word Game
+Problem Type: C - 800
+Problem Link: https://codeforces.com/problemset/problem/1722/C
 Author: Jash Desai (jash13desai)
 */
 // ---------- HEADER ----------
@@ -69,25 +69,41 @@ const ll md = 1000000007;
 // ---------- FUNCTIONS ----------
 int gcd(int a, int b){return (!b) ? a : gcd(b, a % b);}
 int fact(int n){if(n==1 || n==0){return 1;} return (n*fact(n-1));}
-string reverseStr(string s){
-    int i=0;    int j=s.sz-1;
-    while(i<=j){
-        char temp=s[i];
-        s[i]=s[j];
-        s[j]=temp;
-        j--;
-        i++;
-    }
-    return s;
-}
 // ---------- SOLUTIONS ----------
 void solve(){
-    string s,t;    see(s,t);
-    if(t==reverseStr(s)){
-        cout << "YES";
-    }else{
-        cout << "NO";
+    int n; see(n);
+    map<string,int> m;
+    vc(vc(string)) v(3, vc(string)(n));
+    rep(i,0,3){
+        rep(j,0,n){
+            string s; see(s);
+            v[i][j] = s;
+            m[s]++;
+        }
     }
+    int a,b,c;
+    a=0, b=0, c=0;
+    rep(i,0,3){
+        rep(j,0,n){
+            if(i==0){
+                if(m[v[i][j]] == 1) a+=3;
+                if(m[v[i][j]] == 2) a+=1;
+                else continue;
+            }
+            if(i==1){
+                if(m[v[i][j]] == 1) b+=3;
+                if(m[v[i][j]] == 2) b+=1;
+                else continue;
+            }
+            if(i==2){
+                if(m[v[i][j]] == 1) c+=3;
+                if(m[v[i][j]] == 2) c+=1;
+                else continue;
+            }
+        }
+    }
+    put(a,b,c);
+    return;
 }
 // ---------- MAIN ----------
 signed main() {
@@ -96,7 +112,7 @@ signed main() {
 #endif
     IOS;
     int t = 1;
-    // cin>>t;
+    cin>>t;
     while (t--) {
         solve();
         nl;

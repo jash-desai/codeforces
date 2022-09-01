@@ -1,7 +1,7 @@
 /*
-Problem Name: Code
-Problem Type: General
-Problem Link: Link
+Problem Name: *_Problem Name_*
+Problem Type: A/B/C/D... - 800/900/1000/1100...
+Problem Link: https://codeforces.com/problemset/problem/Index/Type
 Author: Jash Desai (jash13desai)
 */
 // ---------- HEADER ----------

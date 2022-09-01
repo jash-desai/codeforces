@@ -23,7 +23,7 @@ void putl(T&&... args) { ((cout << args << " "), ...); cout << '\n';}
 #define ll long long
 #define ld long double
 #define ull unsigned long long
-#define print(x) cout << (x)
+#define print(x) cout << x
 #define sz size()
 #define vc(x) vector<x>
 #define nl cout<<'\n'
@@ -38,8 +38,9 @@ void putl(T&&... args) { ((cout << args << " "), ...); cout << '\n';}
 #define setbits(x) builtin_popcount((x))
 #define tostr(x) to_string(x)
 #define rep(i,a,b) for(int i=a; i<b; i++)
-#define seeArr(arr,x,y) for(int i=x;i<y;i++){cin>>arr[i];}
-#define seeVi(v,n) for(int i=1;i<n;i++){int x; cin>>x; v.pb(x);}
+#define seeArr(arr,n) for(int i=0;i<n;i++){cin>>arr[i];}
+#define seeVi(v) for(int i=0;i<v.sz;i++){int x; cin>>x; v.pb(x);}
+#define seevi(v) for(int i=0;i<v.sz;i++){cin>>v[i];}
 // ---------- DEBUG ----------
 #ifndef ONLINE_JUDGE
 #define debug(x) cerr << #x <<" : "; _print(x); cerr << '\n';
@@ -53,7 +54,7 @@ void _print(ld t) {cerr << t;}
 void _print(double t) {cerr << t;}
 void _print(ull t) {cerr << t;}
 void _print(bool t) {cerr << t;}
-void _print(pair<int, int> t) {cerr << "[ " << t.ff << ", " << t.ss << " ]"; nl;}
+void _print(pair<int,int> t) {cerr << "[ " << t.ff << ", " << t.ss << " ]"; nl;}
 template <class T> void _print(vector <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 // ---------- CONSTANTS ----------
 const ll infmax = INT_MAX;

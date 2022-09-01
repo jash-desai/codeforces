@@ -1,7 +1,7 @@
 /*
-Problem Name: Translation
-Problem Type: A - 800
-Problem Link: https://codeforces.com/problemset/problem/41/A
+Problem Name: Colourblindness
+Problem Type: B - 800
+Problem Link: https://codeforces.com/problemset/problem/1722/B
 Author: Jash Desai (jash13desai)
 */
 // ---------- HEADER ----------
@@ -69,25 +69,21 @@ const ll md = 1000000007;
 // ---------- FUNCTIONS ----------
 int gcd(int a, int b){return (!b) ? a : gcd(b, a % b);}
 int fact(int n){if(n==1 || n==0){return 1;} return (n*fact(n-1));}
-string reverseStr(string s){
-    int i=0;    int j=s.sz-1;
-    while(i<=j){
-        char temp=s[i];
-        s[i]=s[j];
-        s[j]=temp;
-        j--;
-        i++;
-    }
-    return s;
-}
 // ---------- SOLUTIONS ----------
 void solve(){
-    string s,t;    see(s,t);
-    if(t==reverseStr(s)){
-        cout << "YES";
-    }else{
-        cout << "NO";
+    int n; see(n);
+    string a,b; see(a,b);
+    rep(i,0,n){
+        if(a[i]==b[i]){
+            continue;
+        }else if((a[i]=='B' and b[i]=='G') or (a[i]=='G' and b[i]=='B')){
+            continue;
+        }else{
+            put("NO"); return;
+        }
     }
+    put("YES");
+    return;
 }
 // ---------- MAIN ----------
 signed main() {
@@ -96,7 +92,7 @@ signed main() {
 #endif
     IOS;
     int t = 1;
-    // cin>>t;
+    cin>>t;
     while (t--) {
         solve();
         nl;

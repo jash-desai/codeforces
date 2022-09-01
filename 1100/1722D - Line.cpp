@@ -1,7 +1,7 @@
 /*
-Problem Name: Translation
-Problem Type: A - 800
-Problem Link: https://codeforces.com/problemset/problem/41/A
+Problem Name: Line
+Problem Type: D - 1100
+Problem Link: https://codeforces.com/problemset/problem/1722/D
 Author: Jash Desai (jash13desai)
 */
 // ---------- HEADER ----------
@@ -69,24 +69,25 @@ const ll md = 1000000007;
 // ---------- FUNCTIONS ----------
 int gcd(int a, int b){return (!b) ? a : gcd(b, a % b);}
 int fact(int n){if(n==1 || n==0){return 1;} return (n*fact(n-1));}
-string reverseStr(string s){
-    int i=0;    int j=s.sz-1;
-    while(i<=j){
-        char temp=s[i];
-        s[i]=s[j];
-        s[j]=temp;
-        j--;
-        i++;
-    }
-    return s;
-}
 // ---------- SOLUTIONS ----------
 void solve(){
-    string s,t;    see(s,t);
-    if(t==reverseStr(s)){
-        cout << "YES";
-    }else{
-        cout << "NO";
+    int n; see(n); string s; see(s);
+    vi v; int tot=0;
+    rep(i,0,n){
+        if(s[i]=='L'){
+            v.pb((n-i-1)-i);
+            tot+=i;
+        }else{
+            v.pb(i-(n-1-i));
+            tot += (n-1-i);
+        }
+    }
+    sort(all(v), greater<int>());
+    rep(i,0,n){
+        if(v[i]>0){
+            tot += v[i];
+        }
+        put(tot);
     }
 }
 // ---------- MAIN ----------
@@ -96,7 +97,7 @@ signed main() {
 #endif
     IOS;
     int t = 1;
-    // cin>>t;
+    cin>>t;
     while (t--) {
         solve();
         nl;

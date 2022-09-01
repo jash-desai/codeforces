@@ -18,27 +18,29 @@ void putl(T&&... args) { ((cout << args << " "), ...); cout<<'\n';}
 #define int long long
 #define pb push_back
 #define mp make_pair
-#define fi first
-#define se second
+#define ff first
+#define ss second
 #define ll long long
 #define ld long double
 #define ull unsigned long long
 #define print(x) cout << x
 #define sz size()
-#define vc vector
+#define vc(x) vector<x>
 #define nl cout<<'\n'
 #define sqof(a) (a)*(a)
 #define vi vector<int>
+#define vvi vector<vector<int>>
 #define pii pair<int,int>
 #define vii vector<pii>
 #define IOS ios_base:: sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);cin.exceptions(cin.failbit)
 #define all(x) (x).begin(), (x).end()
 #define setpr(x) cout<<setprecision(x)<<fixed
+#define setbits(x) builtin_popcount((x))
 #define tostr(x) to_string(x)
-#define loop(i,a,b) for(int i=a; i<b; i++)
-#define seeArr(arr,x,y) for(int i=x;i<y;i++){cin>>arr[i];}
-#define seeVi(v,n) for(int i=0;i<n;i++){int x; cin>>x; v.pb(x);}
-#define seeStr(s,n) for(int i=0;i<n;i++){int x; cin>>x; s.pb(x);}
+#define rep(i,a,b) for(int i=a; i<b; i++)
+#define seeArr(arr,n) for(int i=0;i<n;i++){cin>>arr[i];}
+#define seeVi(v) for(int i=0;i<v.sz;i++){int x; cin>>x; v.pb(x);}
+#define seevi(v) for(int i=0;i<v.sz;i++){cin>>v[i];}
 // ---------- DEBUG ----------
 #ifndef ONLINE_JUDGE
 #define debug(x) cerr << #x <<" : "; _print(x); cerr << '\n';
@@ -52,7 +54,7 @@ void _print(ld t) {cerr << t;}
 void _print(double t) {cerr << t;}
 void _print(ull t) {cerr << t;}
 void _print(bool t) {cerr << t;}
-void _print(pair<int,int> t) {cerr << "[ " << t.fi << ", " << t.se << " ]"; nl;}
+void _print(pair<int,int> t) {cerr << "[ " << t.ff << ", " << t.ss << " ]"; nl;}
 template <class T> void _print(vector <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 // ---------- CONSTANTS ----------
 const ll infmax = INT_MAX;
@@ -68,7 +70,7 @@ void solve(){
     bool f2 = (a[1]==c[1]);
     bool f3 = (a[2]==c[0]);
     bool f4 = (b[0]==b[2]);
-    if(f1&&f2&&f3&&f4){
+    if(f1 and f2 and f3 and f4){
         cout << "YES"; return;
     }
     cout << "NO";
