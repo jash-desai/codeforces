@@ -92,7 +92,7 @@ signed main() {
 #endif
     IOS;
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--){
         solve();
         nl;
