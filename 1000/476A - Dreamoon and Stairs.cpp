@@ -1,7 +1,7 @@
 /*
-Problem Name: Olesya and Rodion
+Problem Name: Dreamoon and Stairs
 Problem Type: A - 1000
-Problem Link: https://codeforces.com/problemset/problem/584/A
+Problem Link: https://codeforces.com/problemset/problem/476/A
 Author: Jash Desai (jash13desai)
 */
 // ---------- HEADER ----------
@@ -69,17 +69,16 @@ int gcd(int a, int b){return (!b) ? a : gcd(b, a % b);}
 int fact(int n){if(n==1 || n==0){return 1;} return (n*fact(n-1));}
 // ---------- SOLUTIONS ----------
 void solve(){
-    int x,y,n,i,t; see(n,t);
-    if(n==1 and t==10) put(-1);
-    else if(n>=2 and t==10){
-        for(i=1; i<n; i++) cout<<"1";
-        cout<<"0\n";
-    }else{
-        for(i=1; i<=n; i++){
-            put(t);
+    int n,m; see(n,m);
+    int i=m;
+    while(1){
+        if(i>n) break;
+        if(i*2>=n){
+            put(i); return;
         }
-        nl;
+        i+=m;
     }
+    put(-1);
 }
 // ---------- MAIN ----------
 signed main() {
