@@ -1,7 +1,7 @@
 /*
-Problem Name: Fashion in Berland
+Problem Name: Queue on Bus Stop
 Problem Type: A - 1000
-Problem Link: https://codeforces.com/problemset/problem/691/A
+Problem Link: https://codeforces.com/contest/435/problem/A
 Author: Jash Desai (jash13desai)
 */
 // ---------- HEADER ----------
@@ -69,22 +69,43 @@ int gcd(int a, int b){return (!b) ? a : gcd(b, a % b);}
 int fact(int n){if(n==1 || n==0){return 1;} return (n*fact(n-1));}
 // ---------- SOLUTIONS ----------
 void solve(){
-    int n; see(n);
-    int k=n;
-    int x,t(0);
-    while(n--){
-        see(x);
-        if(k==1 and x!=1){
-            put("NO");
-            return;
-        }else if(k==1 and x==1){
-            put("YES");
-            return;
+    int n,m; see(n,m);
+    vi a(n); seevi(a);
+    int ans = 0;
+    for(int i=0; i<n; i++){
+        if(a[i] == 0)continue;
+        int j = i+1;
+        if(j != n && a[i] < m){
+            while(a[i] < m){
+                if(j == n)break;
+                if(a[i] + a[j] <= m){
+                    a[i] += a[j];
+                    a[j] = 0;
+                }
+                else{
+                    break;
+                }
+                j++;
+            }
         }
-        t+=x;
+        if(a[i] <= m){
+            ans++;
+            a[i] = 0;
+        }
+        else if(a[i] > m){
+            int div = a[i] / m;
+            ans += div;
+            a[i] -= (div * m);
+            if(i + 1 == n && a[i] > 0){
+                ans++;
+            }
+            else{
+                a[i+1] = a[i];
+            }
+            a[i] = 0;
+        }
     }
-    if(t!=k-1) put("NO");
-    else put("YES");
+    put(ans);
 }
 // ---------- MAIN ----------
 signed main() {
